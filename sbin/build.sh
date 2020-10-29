@@ -496,7 +496,12 @@ parseJavaVersionString() {
 
   cd "${LIB_DIR}"
   local gradleJavaHome=$(getGradleJavaHome)
-  local version=$(echo "$javaVersion" | JAVA_HOME="$gradleJavaHome" "$gradleJavaHome"/bin/java -cp "target/libs/adopt-shared-lib.jar" ParseVersion -s -f openjdk-semver $ADOPT_BUILD_NUMBER | tr -d '\n')
+  local version=$(echo "$javaVersion" | JAVA_HOME="$gradleJavaHome" "$gradleJavaHome"/bin/java -cp "target/libs/adopt-shared-lib.jar" ParseVersion -s -f openjdk-version $ADOPT_BUILD_NUMBER | tr -d '\n')
+  if [ $version == 8* ]; then
+    version="jdk${version}"
+  else
+    version="jdk-${version}"
+  fi
 
   echo $version
 }
