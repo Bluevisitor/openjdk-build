@@ -172,7 +172,7 @@ then
     fi
     if [ -f "$(cygpath -u $CUDA_HOME/include/cuda.h)" ]
     then
-      export CONFIGURE_ARGS_FOR_ANY_PLATFORM="${CONFIGURE_ARGS_FOR_ANY_PLATFORM} --enable-cuda --with-cuda=$CUDA_HOME"
+      export CONFIGURE_ARGS_FOR_ANY_PLATFORM="${CONFIGURE_ARGS_FOR_ANY_PLATFORM}"
     else
       echo "[ERROR] The following file could not be found: $CUDA_HOME/include/cuda.h"
       echo "Please check that CUDA is correctly installed."

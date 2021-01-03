@@ -65,7 +65,7 @@ then
     CUDA_HOME=/usr/local/cuda-$CUDA_VERSION
     if [ -f $CUDA_HOME/include/cuda.h ]
     then
-      export CONFIGURE_ARGS_FOR_ANY_PLATFORM="${CONFIGURE_ARGS_FOR_ANY_PLATFORM} --enable-cuda --with-cuda=$CUDA_HOME"
+      export CONFIGURE_ARGS_FOR_ANY_PLATFORM="${CONFIGURE_ARGS_FOR_ANY_PLATFORM}"
     fi
   fi
 fi
