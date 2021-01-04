@@ -911,7 +911,17 @@ class Build {
                                 context.sh(script: "rm -rf E:/jenkins/tmp/workspace/build/src/build/*/jdk/gensrc")
                                 context.cleanWs notFailBuild: true, disableDeferredWipeout: true, deleteDirs: true
                             } else {
+                                context.println "DEBUG: Checking for files pre-clean."
+                                context.sh 'for file in $(ls -R); do echo "$file" ; done'
+                                context.println "DEBUG: Finished checking for files pre-clean."
+                                context.println "DEBUG: Clean starting"
                                 context.cleanWs notFailBuild: true
+                                context.println "DEBUG: Clean finished"
+                                context.println "DEBUG: Checking for files post-clean."
+                                context.sh 'for file in $(ls -R); do echo "$file" ; done'
+                                context.println "DEBUG: Finished checking for files post-clean."
+                                context.println "[ERROR] We don't need to go further than this. Exiting to save time..."
+                                throw new Exception()
                             }
                         }
                     } catch (FlowInterruptedException e) {
