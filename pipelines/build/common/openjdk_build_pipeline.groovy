@@ -912,13 +912,15 @@ class Build {
                                 context.cleanWs notFailBuild: true, disableDeferredWipeout: true, deleteDirs: true
                             } else {
                                 context.println "DEBUG: Checking for files pre-clean."
-                                context.sh 'for file in $(ls -R); do echo "$file" ; done'
+                                context.sh 'touch debug_file_1'
+                                context.sh 'ls -R'
                                 context.println "DEBUG: Finished checking for files pre-clean."
                                 context.println "DEBUG: Clean starting"
                                 context.cleanWs notFailBuild: true
                                 context.println "DEBUG: Clean finished"
                                 context.println "DEBUG: Checking for files post-clean."
-                                context.sh 'for file in $(ls -R); do echo "$file" ; done'
+                                context.sh 'touch debug_file_2'
+                                context.sh 'ls -R'
                                 context.println "DEBUG: Finished checking for files post-clean."
                                 context.println "[ERROR] We don't need to go further than this. Exiting to save time..."
                                 throw new Exception()
